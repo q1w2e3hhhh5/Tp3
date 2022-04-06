@@ -21,7 +21,6 @@ public class Book extends Document {
         this.nbPages = nbPages;
     }
 
-
     @Override
     public String toString() {
         return super.toString() +

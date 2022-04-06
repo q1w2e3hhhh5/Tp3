@@ -22,7 +22,7 @@ public class Document {
     private int publicationYear;
     private String author;
     private String editor;
-    private String category;   //rock nd roll, adventure, fiction, poetry
+    private String category;
     private String documentType;
     private int quantity;
     private long borrowTimePeriod;

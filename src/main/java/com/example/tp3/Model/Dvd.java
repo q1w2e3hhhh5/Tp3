@@ -11,11 +11,11 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class Dvd extends Document {
 
-    private int TimeLength; //in min
+    private int TimeLength;
 
     @Builder
-    public Dvd(long id, String title, int publicationYear, String author, String editor, String category, int timeLength,String documentType,int quantity,long borrowTimePeriod) {
-        super(id, title, publicationYear, author, editor, category,documentType,quantity,borrowTimePeriod);
+    public Dvd(long id, String title, int publicationYear, String author, String editor, String category, int timeLength, String documentType, int quantity, long borrowTimePeriod) {
+        super(id, title, publicationYear, author, editor, category, documentType, quantity, borrowTimePeriod);
         this.TimeLength = timeLength;
     }
 
