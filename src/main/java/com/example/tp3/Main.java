@@ -31,16 +31,11 @@ public class Main implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         final Admin admin = adminService.createAdmin("admin@gmail.com", "admin", "Steve admin");
-        final Admin admin1 = adminService.createAdmin("admin@gmail.com", "admin", "Steve admin");
-        final Admin admin2 = adminService.createAdmin("admin@gmail.com", "admin", "Steve admin");
-
-        System.out.println(admin);
-        System.out.println(adminService.findAllAdmin());
-
 
         final Employee employee = employeeService.createEmployee("Employe1", "q1w2e3", "Bob the builder");
 
-        final Client client = clientService.createClient("email","1234","joe");
+        final Client client = clientService.createClient("salah@gmail.com", "1234", "Salah");
+
 
         final Book book0 = employeeService.createBook("Marvel", 189, "stan lee", "action", "Amazon", 1990, 10);
         final Book book1 = employeeService.createBook("Hello kitty", 12, "me", "Horror", "Amazon", 2000, 5);
@@ -50,7 +45,13 @@ public class Main implements CommandLineRunner {
 
         final Dvd dvd = employeeService.createDvd("Kung fu panda", 1990, "me", "disney?", "family", 68, 50);
 
-/*        System.out.println(employee);
+
+  /*      clientService.borrowDocument(dvd);
+        final Borrow borrow = clientService.borrowDocument(dvd);*/
+
+        System.out.println(admin);
+        System.out.println(adminService.findAllAdmin());
+        System.out.println(employee);
         System.out.println(book0);
         System.out.println(book1);
         System.out.println(book2);
@@ -66,7 +67,11 @@ public class Main implements CommandLineRunner {
         System.out.println("**************************************************************************************************************************************");
         System.out.println(employeeService.findDocumentsPublicationYear(1990));
         System.out.println("**************************************************************************************************************************************");
-        System.out.println(employeeService.findDocumentsByCategory("sci-fi"));*/
+        System.out.println(employeeService.findDocumentsByCategory("sci-fi"));
         System.out.println(employeeService.findDocuments());
+
+
+        System.out.println(client);
+
     }
 }

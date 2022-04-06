@@ -2,13 +2,11 @@ package com.example.tp3.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book extends Document {
@@ -18,8 +16,8 @@ public class Book extends Document {
     @Builder
     public Book(long id, String title, int publicationYear, String author,
                 String editor, String category, int nbPages, String documentType,
-                int quantity,int borrowTimePeriod) {
-        super(id, title, publicationYear, author, editor, category, documentType, quantity,borrowTimePeriod);
+                int quantity, long borrowTimePeriod) {
+        super(id, title, publicationYear, author, editor, category, documentType, quantity, borrowTimePeriod);
         this.nbPages = nbPages;
     }
 

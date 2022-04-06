@@ -1,6 +1,7 @@
 package com.example.tp3.Model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,9 +25,9 @@ public class Document {
     private String category;   //rock nd roll, adventure, fiction, poetry
     private String documentType;
     private int quantity;
-    private int borrowTimePeriod;
+    private long borrowTimePeriod;
 
-    public Document(String title, int publicationYear, String author, String editor, String category, String documentType, int quantity,int borrowTimePeriod) {
+    public Document(String title, int publicationYear, String author, String editor, String category, String documentType, int quantity, long borrowTimePeriod) {
         this.title = title;
         this.publicationYear = publicationYear;
         this.author = author;
@@ -47,7 +48,7 @@ public class Document {
                 "\t\t" + "Editor : " + editor + "\n" +
                 "\t\t" + "Publication Year : " + publicationYear + "\n" +
                 "\t\t" + "Category : " + category + "\n" +
-                "\t\t" + "Borrow Time Period : " + borrowTimePeriod + " Week" +"\n" +
+                "\t\t" + "Borrow Time Period : " + borrowTimePeriod + " Week" + "\n" +
                 "\t\t" + "Quantity available : " + quantity + "\n";
     }
 }

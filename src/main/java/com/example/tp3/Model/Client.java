@@ -1,6 +1,8 @@
 package com.example.tp3.Model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,10 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Client {
 
     @Id
@@ -20,6 +25,7 @@ public class Client {
     private String email;
     private String password;
     private String fullName;
+    //private List<Document> borrows;
 
 
     public Client(String email, String password, String fullName) {
@@ -28,5 +34,12 @@ public class Client {
         this.fullName = fullName;
     }
 
-
+    @Override
+    public String toString() {
+        return "\n" +
+                "\t" + "ID : " + id + "\n" +
+                "\t\t" + "Email : " + email + "\n" +
+                "\t\t" + "Password : " + password + "\n" +
+                "\t\t" + "Full Name : " + fullName + "\n";
+    }
 }
