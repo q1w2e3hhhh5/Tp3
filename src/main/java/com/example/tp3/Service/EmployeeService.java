@@ -1,9 +1,6 @@
 package com.example.tp3.Service;
 
-import com.example.tp3.Model.Book;
-import com.example.tp3.Model.Cd;
-import com.example.tp3.Model.Document;
-import com.example.tp3.Model.Employee;
+import com.example.tp3.Model.*;
 import com.example.tp3.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.cdi.CdiRepositoryBean;
@@ -37,6 +34,12 @@ public class EmployeeService {
         return documentRepository.save(cd);
     }
 
+    public Dvd createDvd(String title, int publicationYear, String author, String editor, String genre, int timeLength, int quantity) {
+        Dvd dvd = Dvd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).genre(genre)
+                .timeLength(timeLength).documentType("Dvd").quantity(quantity).build();
+        return documentRepository.save(dvd);
+    }
+
 
     public List<Document> findDocuments() {
         return documentRepository.findAll();
@@ -57,6 +60,5 @@ public class EmployeeService {
     public List<Document> findDocumentsByCategory(String category) {
         return documentRepository.findBooksByCategory(category);
     }
-
 
 }

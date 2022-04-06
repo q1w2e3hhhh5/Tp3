@@ -14,4 +14,6 @@ public interface DocumentRepository extends JpaRepository<Document,Long> {
     List<Document> findBooksByPublicationYear(int publicationYear);
 
     List<Document> findBooksByCategory(String category);
+
+
 }
