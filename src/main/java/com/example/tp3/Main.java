@@ -49,6 +49,7 @@ public class Main implements CommandLineRunner {
   /*      clientService.borrowDocument(dvd);
         final Borrow borrow = clientService.borrowDocument(dvd);*/
 
+/*
         System.out.println(admin);
         System.out.println(adminService.findAllAdmin());
         System.out.println(employee);
@@ -69,8 +70,14 @@ public class Main implements CommandLineRunner {
         System.out.println("**************************************************************************************************************************************");
         System.out.println(employeeService.findDocumentsByCategory("sci-fi"));
         System.out.println(employeeService.findDocuments());
+*/
 
+        employeeService.chargeFee(client,50);
 
+        System.out.println("**************************************************************************************************************************************");
+
+        System.out.println(client);
+        clientService.payFee(client,30);
         System.out.println(client);
 
     }

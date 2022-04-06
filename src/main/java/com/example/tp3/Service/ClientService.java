@@ -6,6 +6,7 @@ import com.example.tp3.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 
@@ -21,9 +22,24 @@ public class ClientService {
     private BorrowRepository borrowRepository;
 
     public Client createClient(String email, String password, String fullName/*, List<Document> borrows*/) {
-        Client client = Client.builder().email(email).password(password).fullName(fullName)/*.borrows(borrows)*/.build();
+        Client client = Client.builder().email(email).password(password).fullName(fullName)/*.borrows(borrows)*/.fee(0).build();
         return clientRepository.save(client);
     }
+
+    @Transactional
+    public void payFee(Client client,int amount) {
+        client.setFee(client.getFee()-amount);
+        clientRepository.save(client);
+    }
+
+    /*
+    *     @Transactional //aborts the method if the there's an exception
+    public void transfertDeCompteACompte(Compte source, Compte destination, int montant){
+        source.setBalance(source.getBalance()-montant);
+        destination.setBalance(destination.getBalance()+montant);
+        compteRepository.save(source);
+        compteRepository.save(destination);
+    }*/
 
 /*    public void borrowDocument(Document document) {
         Borrow borrow = Borrow.builder(document, LocalDateTime.now(),LocalDateTime.now().plusWeeks(document.getBorrowTimePeriod()));

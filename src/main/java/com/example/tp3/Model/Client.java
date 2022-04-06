@@ -25,6 +25,7 @@ public class Client {
     private String email;
     private String password;
     private String fullName;
+    private int fee;
     //private List<Document> borrows;
 
 
@@ -40,6 +41,7 @@ public class Client {
                 "\t" + "ID : " + id + "\n" +
                 "\t\t" + "Email : " + email + "\n" +
                 "\t\t" + "Password : " + password + "\n" +
-                "\t\t" + "Full Name : " + fullName + "\n";
+                "\t\t" + "Full Name : " + fullName + "\n" +
+                "\t\t" + "Fee To Pay : " + fee + "\n";
     }
 }

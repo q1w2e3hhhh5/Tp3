@@ -16,6 +16,9 @@ public class EmployeeService {
     @Autowired
     private DocumentRepository documentRepository;
 
+    @Autowired
+    private ClientRepository clientRepository;
+
 
     public Employee createEmployee(String email, String passwords, String fullName) {
         return adminRepository.save(new Employee(email, passwords, fullName));
@@ -60,4 +63,8 @@ public class EmployeeService {
         return documentRepository.findBooksByCategory(category);
     }
 
+    public void chargeFee(Client client, int amount) {
+        client.setFee(client.getFee()+amount);
+        clientRepository.save(client);
+    }
 }
