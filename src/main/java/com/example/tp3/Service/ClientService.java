@@ -28,6 +28,14 @@ public class ClientService {
 
     @Transactional
     public void payFee(Client client,int amount) {
+        if(client.getFee()-amount < 0){
+            client.setFee(0);
+            /*            //do I give him back his change?
+            System.out.print("give back: ");
+            System.out.println(amount-client.getFee()+"$");*/
+            clientRepository.save(client);
+            return;
+        }
         client.setFee(client.getFee()-amount);
         clientRepository.save(client);
     }

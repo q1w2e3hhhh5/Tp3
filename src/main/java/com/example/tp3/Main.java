@@ -34,7 +34,8 @@ public class Main implements CommandLineRunner {
 
         final Employee employee = employeeService.createEmployee("Employe1", "q1w2e3", "Bob the builder");
 
-        final Client client = clientService.createClient("salah@gmail.com", "1234", "Salah");
+        final Client clientMadeByClientService = clientService.createClient("salah@gmail.com", "1234", "Salah");
+        final Client clientMadeByEmployeeService = employeeService.createClient("edine@gmail.com", "4321", "edine");
 
 
         final Book book0 = employeeService.createBook("Marvel", 189, "stan lee", "action", "Amazon", 1990, 10);
@@ -46,10 +47,12 @@ public class Main implements CommandLineRunner {
         final Dvd dvd = employeeService.createDvd("Kung fu panda", 1990, "me", "disney?", "family", 68, 50);
 
 
-  /*      clientService.borrowDocument(dvd);
-        final Borrow borrow = clientService.borrowDocument(dvd);*/
+        /*
+        clientService.borrowDocument(dvd);
+        final Borrow borrow = clientService.borrowDocument(dvd);
+        */
 
-/*
+
         System.out.println(admin);
         System.out.println(adminService.findAllAdmin());
         System.out.println(employee);
@@ -70,15 +73,15 @@ public class Main implements CommandLineRunner {
         System.out.println("**************************************************************************************************************************************");
         System.out.println(employeeService.findDocumentsByCategory("sci-fi"));
         System.out.println(employeeService.findDocuments());
-*/
 
-        employeeService.chargeFee(client,50);
 
-        System.out.println("**************************************************************************************************************************************");
+        employeeService.chargeFee(clientMadeByClientService, 10);
+        employeeService.chargeFee(clientMadeByEmployeeService, 50);
+        System.out.println(employeeService.findAllClients());
+        clientService.payFee(clientMadeByClientService, 30);
+        clientService.payFee(clientMadeByEmployeeService, 30);
+        System.out.println(employeeService.findAllClients());
 
-        System.out.println(client);
-        clientService.payFee(client,30);
-        System.out.println(client);
 
     }
 }

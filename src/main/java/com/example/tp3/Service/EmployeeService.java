@@ -24,6 +24,11 @@ public class EmployeeService {
         return adminRepository.save(new Employee(email, passwords, fullName));
     }
 
+    public Client createClient(String email, String password, String fullName/*, List<Document> borrows*/) {
+        Client client = Client.builder().email(email).password(password).fullName(fullName)/*.borrows(borrows)*/.fee(0).build();
+        return clientRepository.save(client);
+    }
+
     public Book createBook(String title, int nbPages, String author, String category, String editor, int publicationYear, int quantity) {
         Book book = Book.builder().title(title).nbPages(nbPages).category(category).author(author).editor(editor).
                 publicationYear(publicationYear).documentType("Book").quantity(quantity).borrowTimePeriod(3).build();
@@ -66,5 +71,9 @@ public class EmployeeService {
     public void chargeFee(Client client, int amount) {
         client.setFee(client.getFee()+amount);
         clientRepository.save(client);
+    }
+
+    public List<Client> findAllClients() {
+        return clientRepository.findAll();
     }
 }
