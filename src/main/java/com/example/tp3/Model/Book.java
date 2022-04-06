@@ -1,6 +1,5 @@
 package com.example.tp3.Model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,8 +18,8 @@ public class Book extends Document {
     @Builder
     public Book(long id, String title, int publicationYear, String author,
                 String editor, String category, int nbPages, String documentType,
-                int quantity) {
-        super(id, title, publicationYear, author, editor, category,documentType,quantity);
+                int quantity,int borrowTimePeriod) {
+        super(id, title, publicationYear, author, editor, category, documentType, quantity,borrowTimePeriod);
         this.nbPages = nbPages;
     }
 

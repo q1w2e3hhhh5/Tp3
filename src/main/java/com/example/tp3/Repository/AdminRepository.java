@@ -1,7 +1,6 @@
 package com.example.tp3.Repository;
 
-import com.example.tp3.Model.Admin;
-import com.example.tp3.Model.Employee;
+import com.example.tp3.Model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

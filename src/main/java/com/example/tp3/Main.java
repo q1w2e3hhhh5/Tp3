@@ -67,6 +67,6 @@ public class Main implements CommandLineRunner {
         System.out.println(employeeService.findDocumentsPublicationYear(1990));
         System.out.println("**************************************************************************************************************************************");
         System.out.println(employeeService.findDocumentsByCategory("sci-fi"));*/
-
+        System.out.println(employeeService.findDocuments());
     }
 }

@@ -13,8 +13,8 @@ public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
 
-    public Admin createAdmin(String email, String password, String fullname) {
-        return adminRepository.save(new Admin(email,password,fullname));
+    public Admin createAdmin(String email, String password, String fullName) {
+        return adminRepository.save(new Admin(email,password,fullName));
     }
 
     public List<Admin> findAllAdmin() {

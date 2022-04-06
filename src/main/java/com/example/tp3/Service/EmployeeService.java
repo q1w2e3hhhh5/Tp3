@@ -3,7 +3,6 @@ package com.example.tp3.Service;
 import com.example.tp3.Model.*;
 import com.example.tp3.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.cdi.CdiRepositoryBean;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,19 +23,19 @@ public class EmployeeService {
 
     public Book createBook(String title, int nbPages, String author, String category, String editor, int publicationYear, int quantity) {
         Book book = Book.builder().title(title).nbPages(nbPages).category(category).author(author)
-                .editor(editor).publicationYear(publicationYear).documentType("Book").quantity(quantity).build();
+                .editor(editor).publicationYear(publicationYear).documentType("Book").quantity(quantity).borrowTimePeriod(3).build();
         return documentRepository.save(book);
     }
 
     public Cd createCd(String title, int publicationYear, String author, String editor, String category, int timeLength, int quantity) {
         Cd cd = Cd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).genre(category)
-                .timeLength(timeLength).documentType("Cd").quantity(quantity).build();
+                .timeLength(timeLength).documentType("Cd").quantity(quantity).borrowTimePeriod(2).build();
         return documentRepository.save(cd);
     }
 
     public Dvd createDvd(String title, int publicationYear, String author, String editor, String genre, int timeLength, int quantity) {
         Dvd dvd = Dvd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).genre(genre)
-                .timeLength(timeLength).documentType("Dvd").quantity(quantity).build();
+                .timeLength(timeLength).documentType("Dvd").quantity(quantity).borrowTimePeriod(1).build();
         return documentRepository.save(dvd);
     }
 

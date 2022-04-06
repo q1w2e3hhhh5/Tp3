@@ -17,8 +17,8 @@ public class Cd extends Document {
 
 
     @Builder
-    public Cd(long id, String title, int publicationYear, String author, String editor, String genre, int timeLength,String documentType,int quantity) {
-        super(id, title, publicationYear, author, editor, genre, documentType,quantity);
+    public Cd(long id, String title, int publicationYear, String author, String editor, String genre, int timeLength,String documentType,int quantity,int borrowTimePeriod) {
+        super(id, title, publicationYear, author, editor, genre, documentType,quantity,borrowTimePeriod);
         TimeLength = timeLength;
     }
 

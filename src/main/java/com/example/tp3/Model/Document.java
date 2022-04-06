@@ -24,8 +24,9 @@ public class Document {
     private String category;   //rock nd roll, adventure, fiction, poetry
     private String documentType;
     private int quantity;
+    private int borrowTimePeriod;
 
-    public Document(String title, int publicationYear, String author, String editor, String category, String documentType, int quantity) {
+    public Document(String title, int publicationYear, String author, String editor, String category, String documentType, int quantity,int borrowTimePeriod) {
         this.title = title;
         this.publicationYear = publicationYear;
         this.author = author;
@@ -33,6 +34,7 @@ public class Document {
         this.category = category;
         this.documentType = documentType;
         this.quantity = quantity;
+        this.borrowTimePeriod = borrowTimePeriod;
     }
 
     @Override
@@ -45,6 +47,7 @@ public class Document {
                 "\t\t" + "Editor : " + editor + "\n" +
                 "\t\t" + "Publication Year : " + publicationYear + "\n" +
                 "\t\t" + "Category : " + category + "\n" +
+                "\t\t" + "Borrow Time Period : " + borrowTimePeriod + " Week" +"\n" +
                 "\t\t" + "Quantity available : " + quantity + "\n";
     }
 }
