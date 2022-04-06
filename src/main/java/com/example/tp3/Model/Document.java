@@ -21,10 +21,19 @@ public class Document {
     private int publicationYear;
     private String author;
     private String editor;
-    private String type;   //rock nd roll, adventure, fiction, poetry
+    private String category;   //rock nd roll, adventure, fiction, poetry
     private String documentType;
     private int quantity;
 
+    public Document(String title, int publicationYear, String author, String editor, String category, String documentType, int quantity) {
+        this.title = title;
+        this.publicationYear = publicationYear;
+        this.author = author;
+        this.editor = editor;
+        this.category = category;
+        this.documentType = documentType;
+        this.quantity = quantity;
+    }
 
     @Override
     public String toString() {
@@ -35,7 +44,7 @@ public class Document {
                 "\t\t" + "Author : " + author + "\n" +
                 "\t\t" + "Editor : " + editor + "\n" +
                 "\t\t" + "Publication Year : " + publicationYear + "\n" +
-                "\t\t" + "Genre : " + type + "\n" +
+                "\t\t" + "Category : " + category + "\n" +
                 "\t\t" + "Quantity available : " + quantity + "\n";
     }
 }

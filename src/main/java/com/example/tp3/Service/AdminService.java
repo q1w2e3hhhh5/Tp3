@@ -1,8 +1,7 @@
 package com.example.tp3.Service;
 
-import com.example.tp3.Model.Admin;
-import com.example.tp3.Model.Employee;
-import com.example.tp3.Repository.AdminRepository;
+import com.example.tp3.Model.*;
+import com.example.tp3.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

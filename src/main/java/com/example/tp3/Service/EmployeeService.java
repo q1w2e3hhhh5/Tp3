@@ -1,12 +1,15 @@
 package com.example.tp3.Service;
 
 import com.example.tp3.Model.Book;
+import com.example.tp3.Model.Cd;
+import com.example.tp3.Model.Document;
 import com.example.tp3.Model.Employee;
-import com.example.tp3.Repository.AdminRepository;
-import com.example.tp3.Repository.BookRepository;
-import com.example.tp3.Repository.EmployeeRepository;
+import com.example.tp3.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.cdi.CdiRepositoryBean;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class EmployeeService {
@@ -15,17 +18,45 @@ public class EmployeeService {
     private EmployeeRepository adminRepository;
 
     @Autowired
-    private BookRepository bookRepository;
-
+    private DocumentRepository documentRepository;
 
 
     public Employee createEmployee(String email, String passwords, String fullName) {
-        return adminRepository.save(new Employee(email,passwords,fullName));
+        return adminRepository.save(new Employee(email, passwords, fullName));
     }
 
-    public Book createBook(String title, int nbPages, String type, String author, String genre, String editor, int publicationYear,int quantity) {
-        Book book = Book.builder().title(title).nbPages(nbPages).type(type).genre(genre).author(author)
+    public Book createBook(String title, int nbPages, String author, String category, String editor, int publicationYear, int quantity) {
+        Book book = Book.builder().title(title).nbPages(nbPages).category(category).author(author)
                 .editor(editor).publicationYear(publicationYear).documentType("Book").quantity(quantity).build();
-        return bookRepository.save(book);
+        return documentRepository.save(book);
     }
+
+    public Cd createCd(String title, int publicationYear, String author, String editor, String category, int timeLength, int quantity) {
+        Cd cd = Cd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).genre(category)
+                .timeLength(timeLength).documentType("Cd").quantity(quantity).build();
+        return documentRepository.save(cd);
+    }
+
+
+    public List<Document> findDocuments() {
+        return documentRepository.findAll();
+    }
+
+    public List<Document> findDocumentsByTitle(String title) {
+        return documentRepository.findBooksByTitleContains(title);
+    }
+
+    public List<Document> findDocumentsByAuthor(String author) {
+        return documentRepository.findBooksByAuthor(author);
+    }
+
+    public List<Document> findDocumentsPublicationYear(int publicationYear) {
+        return documentRepository.findBooksByPublicationYear(publicationYear);
+    }
+
+    public List<Document> findDocumentsByCategory(String category) {
+        return documentRepository.findBooksByCategory(category);
+    }
+
+
 }
