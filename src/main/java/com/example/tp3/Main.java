@@ -39,6 +39,12 @@ public class Main implements CommandLineRunner{
 
 
         final Employee employee = employeeService.createEmployee("Employe1","q1w2e3","Bob the builder");
+
+        final Book book = employeeService.createBook("Marvel", 189, "comic", "Stan lee",  "action", "Marvel",2001,10);
+
         System.out.println(employee);
+        System.out.println(book);
+
+
     }
 }
