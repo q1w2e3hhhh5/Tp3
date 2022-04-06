@@ -41,31 +41,10 @@ public class EmployeeService {
         return documentRepository.save(cd);
     }
 
-    public Dvd createDvd(String title, int publicationYear, String author, String editor, String genre, int timeLength, int quantity) {
+    public Dvd createDvd(String title, int publicationYear, String author, String editor, String category, int timeLength, int quantity) {
         Dvd dvd = Dvd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).
-        genre(genre).timeLength(timeLength).documentType("Dvd").quantity(quantity).borrowTimePeriod(1).build();
+        category(category).timeLength(timeLength).documentType("Dvd").quantity(quantity).borrowTimePeriod(1).build();
         return documentRepository.save(dvd);
-    }
-
-
-    public List<Document> findDocuments() {
-        return documentRepository.findAll();
-    }
-
-    public List<Document> findDocumentsByTitle(String title) {
-        return documentRepository.findBooksByTitleContains(title);
-    }
-
-    public List<Document> findDocumentsByAuthor(String author) {
-        return documentRepository.findBooksByAuthor(author);
-    }
-
-    public List<Document> findDocumentsPublicationYear(int publicationYear) {
-        return documentRepository.findBooksByPublicationYear(publicationYear);
-    }
-
-    public List<Document> findDocumentsByCategory(String category) {
-        return documentRepository.findBooksByCategory(category);
     }
 
     public void chargeFee(Client client, int amount) {

@@ -14,8 +14,8 @@ public class Dvd extends Document {
     private int TimeLength; //in min
 
     @Builder
-    public Dvd(long id, String title, int publicationYear, String author, String editor, String genre, int timeLength,String documentType,int quantity,long borrowTimePeriod) {
-        super(id, title, publicationYear, author, editor, genre,documentType,quantity,borrowTimePeriod);
+    public Dvd(long id, String title, int publicationYear, String author, String editor, String category, int timeLength,String documentType,int quantity,long borrowTimePeriod) {
+        super(id, title, publicationYear, author, editor, category,documentType,quantity,borrowTimePeriod);
         this.TimeLength = timeLength;
     }
 
