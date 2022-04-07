@@ -1,7 +1,7 @@
 package com.example.tp3;
 
-import com.example.tp3.Model.*;
-import com.example.tp3.Service.*;
+import com.example.tp3.model.*;
+import com.example.tp3.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -52,15 +52,23 @@ public class Main implements CommandLineRunner {
         final Borrow borrow = clientService.borrowDocument(dvd);
         */
 
-        System.out.println(documentService.findDocumentsByTitle("Marvel"));
+        //     System.out.println(documentService.findDocumentsByTitle("Marvel"));
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
+
+
+        //clientService.borrowDocument(3,5);
+
+        //System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
+
+
+        //System.out.println(employeeService.findAllClients());
 
         //clientService.borrowDocument(clientMadeByClientService,dvd);
         //clientService.borrowDocument(3,5);
         //clientService.findListOfBorrowsByClient(3);
 
 
-        /*        System.out.println(adminService.findAllAdmin());
+        // System.out.println(adminService.findAllAdmin());
 
         System.out.println("******* Client Service search *******");
         System.out.println(documentService.findDocuments());
@@ -72,7 +80,7 @@ public class Main implements CommandLineRunner {
         System.out.println(documentService.findAllBooks());
         System.out.println(documentService.findAllCds());
         System.out.println(documentService.findAllDvds());
-
+ /*
         System.out.println("******* Fee Service *******");
         employeeService.chargeFee(clientMadeByClientService, 10);
         employeeService.chargeFee(clientMadeByEmployeeService, 50);

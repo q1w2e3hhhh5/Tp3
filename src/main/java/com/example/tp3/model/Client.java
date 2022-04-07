@@ -1,4 +1,4 @@
-package com.example.tp3.Model;
+package com.example.tp3.model;
 
 
 import lombok.AllArgsConstructor;

@@ -1,13 +1,12 @@
 package com.example.tp3.dto;
 
-import com.example.tp3.Model.Borrow;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class ClientDTO {
+public class ClientDto {
 
     private long id;
     private String email;

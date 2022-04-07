@@ -1,10 +1,12 @@
 package com.example.tp3.util;
 
-import com.example.tp3.Model.*;
+import com.example.tp3.model.*;
 import com.example.tp3.dto.*;
 
-public class DtoUtils {
+import java.util.ArrayList;
+import java.util.List;
 
+public class DtoUtils {
 
     public static BorrowDto toDto(Borrow borrow) {
         BorrowDto borrowDto = new BorrowDto();
@@ -17,8 +19,8 @@ public class DtoUtils {
         return borrowDto;
     }
 
-    public static ClientDTO getClientDTO(Client client) {
-        ClientDTO clientDTO = new ClientDTO();
+    public static ClientDto getClientDTO(Client client) {
+        ClientDto clientDTO = new ClientDto();
 
         clientDTO.setId(client.getId());
         clientDTO.setEmail(client.getEmail());
@@ -30,8 +32,7 @@ public class DtoUtils {
         return clientDTO;
     }
 
-
-    public static DocumentDto getDocumentDto(Document document){
+    public static DocumentDto getDocumentDto(Document document) {
         DocumentDto documentDto = new DocumentDto();
 
         documentDto.setId(document.getId());
@@ -40,11 +41,53 @@ public class DtoUtils {
         documentDto.setCategory(documentDto.getCategory());
         documentDto.setEditor(document.getEditor());
         documentDto.setQuantity(document.getQuantity());
+
         documentDto.setTitle(document.getTitle());
         documentDto.setPublicationYear(document.getPublicationYear());
         documentDto.setBorrowTimePeriod(document.getBorrowTimePeriod());
 
         return documentDto;
 
+    }
+
+    public static List<DocumentDto> getDocumentsDto(List<Document> documents) {
+        List<DocumentDto> documentDtos = new ArrayList<>();
+        for (Document d : documents) {
+            documentDtos.add(getDocumentDto(d));
+        }
+        return documentDtos;
+    }
+
+    public static List<ClientDto> getClientsDTO(List<Client> clients) {
+        List<ClientDto> clientDtos = new ArrayList<>();
+        for (Client c : clients) {
+            clientDtos.add(getClientDTO(c));
+        }
+        return clientDtos;
+    }
+
+    public static List<DocumentDto> getBooksDto(List<Document> books) {
+        List<DocumentDto> documentDtos = new ArrayList<>();
+        for (Document b : books) {
+            documentDtos.add(getDocumentDto(b));
+        }
+        return documentDtos;
+    }
+
+    public static List<DocumentDto> getCdsDto(List<Document> cd) {
+        List<DocumentDto> documentDtos = new ArrayList<>();
+        for (Document c : cd) {
+            documentDtos.add(getDocumentDto(c));
+        }
+        return documentDtos;
+
+    }
+
+    public static List<DocumentDto> getDvdsDto(List<Document> dvd) {
+        List<DocumentDto> documentDtos = new ArrayList<>();
+        for (Document d : dvd) {
+            documentDtos.add(getDocumentDto(d));
+        }
+        return documentDtos;
     }
 }

@@ -1,9 +1,9 @@
-package com.example.tp3.Service;
+package com.example.tp3.service;
 
-import com.example.tp3.Model.*;
-import com.example.tp3.Repository.BorrowRepository;
-import com.example.tp3.Repository.ClientRepository;
-import com.example.tp3.Repository.DocumentRepository;
+import com.example.tp3.model.*;
+import com.example.tp3.repository.BorrowRepository;
+import com.example.tp3.repository.ClientRepository;
+import com.example.tp3.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,16 +49,23 @@ public class ClientService {
     }
 
     public void findListOfBorrowsByClient(int clientId) {
-     //   return clientRepository.find
+        //   return clientRepository.find
     }
 
-    public Optional<Client> findClientById(Long id){
+    public Optional<Client> findClientById(Long id) {
         return clientRepository.findById(id);
     }
 
-    public Optional<Document> findDocumentById(Long id){
+    private Optional<Document> findDocumentById(Long id) {
         return documentRepository.findById(id);
     }
+
+/*    public DocumentDto findDocumentById(Long id){
+        Document document = documentRepository.findById(id);
+        DocumentDto documentDto = DtoUtils.getDocumentDto(document);
+        return documentDto;
+
+    }*/
 
 
 

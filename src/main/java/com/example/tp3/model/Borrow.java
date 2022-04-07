@@ -1,10 +1,9 @@
-package com.example.tp3.Model;
+package com.example.tp3.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,7 +22,6 @@ public class Borrow {
 
     @ManyToOne
     @JoinColumn(name = "document_id")
-  //  @OneToMany(fetch = FetchType.EAGER, mappedBy = "topic", cascade = CascadeType.ALL)
     private Document document;
 
     private LocalDateTime localDateTimeOfBorrow;

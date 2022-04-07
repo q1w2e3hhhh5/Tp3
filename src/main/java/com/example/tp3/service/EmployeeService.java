@@ -1,8 +1,8 @@
-package com.example.tp3.Service;
+package com.example.tp3.service;
 
-import com.example.tp3.Model.*;
-import com.example.tp3.Repository.*;
-import com.example.tp3.dto.ClientDTO;
+import com.example.tp3.model.*;
+import com.example.tp3.repository.*;
+import com.example.tp3.dto.ClientDto;
 import com.example.tp3.util.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -55,15 +55,18 @@ public class EmployeeService {
         clientRepository.save(client);
     }
 
-    public List<Client> findAllClients() {
-        return clientRepository.findAll();
+    @Transactional
+    public List<ClientDto> findAllClients() {
+        List<Client> clients = clientRepository.findAll();
+        List<ClientDto> ClientDto = DtoUtils.getClientsDTO(clients);
+        return ClientDto;
     }
 
     @Transactional
-    public ClientDTO findClientByEmail(String email) {
-        Client byEmail = clientRepository.findByEmail(email);
-        ClientDTO clientDTO = DtoUtils.getClientDTO(byEmail);
-        return clientDTO;
+    public ClientDto findClientByEmail(String email) {
+        Client client = clientRepository.findByEmail(email);
+        ClientDto ClientDto = DtoUtils.getClientDTO(client);
+        return ClientDto;
     }
 
 

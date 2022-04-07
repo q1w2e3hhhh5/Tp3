@@ -1,4 +1,4 @@
-package com.example.tp3.Model;
+package com.example.tp3.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 @Data
 @NoArgsConstructor
-public class Admin {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -19,8 +20,7 @@ public class Admin {
     private String password;
     private String fullName;
 
-
-    public Admin(String email, String password, String fullName) {
+    public Employee(String email, String password, String fullName) {
         this.email = email;
         this.password = password;
         this.fullName = fullName;

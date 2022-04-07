@@ -1,7 +1,6 @@
-package com.example.tp3.Model;
+package com.example.tp3.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
