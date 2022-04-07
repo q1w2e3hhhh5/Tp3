@@ -8,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Component
 public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private DocumentRepository documentRepository;
 
 
     @Autowired
@@ -27,12 +31,36 @@ public class ClientService {
     public void payFee(Client client, int amount) {
         if (client.getFee() - amount < 0) {
             client.setFee(0);
-            clientRepository.save(client);
+            clientRepository.save(client); //just give him his money back
             return;
         }
         client.setFee(client.getFee() - amount);
         clientRepository.save(client);
     }
+
+    public void borrowDocument(Long clientId, Long documentId) {
+        this.findClientById(clientId);
+
+
+        Borrow borrow = new Borrow(this.findDocumentById(documentId));
+
+        //clientRepository.findBy
+
+    }
+
+    public void findListOfBorrowsByClient(int clientId) {
+     //   return clientRepository.find
+    }
+
+    public Optional<Client> findClientById(Long id){
+        return clientRepository.findById(id);
+    }
+
+    public Optional<Document> findDocumentById(Long id){
+        return documentRepository.findById(id);
+    }
+
+
 
     /*
       public void borrowDocument(Document document) {

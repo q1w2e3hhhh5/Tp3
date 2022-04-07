@@ -2,9 +2,12 @@ package com.example.tp3.Service;
 
 import com.example.tp3.Model.*;
 import com.example.tp3.Repository.*;
+import com.example.tp3.dto.ClientDTO;
+import com.example.tp3.util.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
@@ -55,4 +58,13 @@ public class EmployeeService {
     public List<Client> findAllClients() {
         return clientRepository.findAll();
     }
+
+    @Transactional
+    public ClientDTO findClientByEmail(String email) {
+        Client byEmail = clientRepository.findByEmail(email);
+        ClientDTO clientDTO = DtoUtils.getClientDTO(byEmail);
+        return clientDTO;
+    }
+
+
 }

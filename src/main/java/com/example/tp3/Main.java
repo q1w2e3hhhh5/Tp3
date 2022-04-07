@@ -52,12 +52,15 @@ public class Main implements CommandLineRunner {
         final Borrow borrow = clientService.borrowDocument(dvd);
         */
 
-        /*todo ask teacher why this no work? is it a race condition or?
-        System.out.println(documentService.findDocumentsByTitle("bob"));
-        System.out.println(documentService.findDocumentsByTitle("fu"));
-        */
+        System.out.println(documentService.findDocumentsByTitle("Marvel"));
+        System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
 
-        System.out.println(adminService.findAllAdmin());
+        //clientService.borrowDocument(clientMadeByClientService,dvd);
+        //clientService.borrowDocument(3,5);
+        //clientService.findListOfBorrowsByClient(3);
+
+
+        /*        System.out.println(adminService.findAllAdmin());
 
         System.out.println("******* Client Service search *******");
         System.out.println(documentService.findDocuments());
@@ -79,7 +82,7 @@ public class Main implements CommandLineRunner {
         clientService.payFee(clientMadeByClientService, 30);
         clientService.payFee(clientMadeByEmployeeService, 30);
         System.out.println("******* After *******");
-        System.out.println(employeeService.findAllClients());
+        System.out.println(employeeService.findAllClients());*/
 
 
     }

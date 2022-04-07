@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -26,7 +23,9 @@ public class Client {
     private String password;
     private String fullName;
     private int fee;
-    //private List<Document> borrows;
+
+    @OneToMany(mappedBy = "document")
+    private List<Borrow> borrows;
 
 
     public Client(String email, String password, String fullName) {
@@ -42,6 +41,7 @@ public class Client {
                 "\t\t" + "Email : " + email + "\n" +
                 "\t\t" + "Password : " + password + "\n" +
                 "\t\t" + "Full Name : " + fullName + "\n" +
-                "\t\t" + "Fee To Pay : " + fee + "\n";
+                "\t\t" + "Fee To Pay : " + fee + "\n" +
+                "\t\t" + "List of borrows : " + borrows + "\n";
     }
 }
