@@ -1,13 +1,9 @@
 package com.example.tp3.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Entity
 @Data
@@ -24,12 +20,16 @@ public class Borrow {
     @JoinColumn(name = "document_id")
     private Document document;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    @ToString.Exclude
+    private Client client;
+
     private LocalDateTime localDateTimeOfBorrow;
     private LocalDateTime localDateTimeOfReturn;
 
-
-    public Borrow(Optional<Document> documentById) {
-        this.document = document;
+    public Borrow(Document documentById,Client client) {
+        this.document = documentById;
         this.localDateTimeOfBorrow = LocalDateTime.now();
         if(document.getDocumentType().equals("Book")){
             this.localDateTimeOfReturn = LocalDateTime.now().plusWeeks(3);
@@ -38,5 +38,6 @@ public class Borrow {
         }else if (document.getDocumentType().equals("Dvd")){
             this.localDateTimeOfReturn = LocalDateTime.now().plusWeeks(1);
         }
+        this.client = client;
     }
 }

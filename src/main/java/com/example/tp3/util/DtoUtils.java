@@ -50,6 +50,25 @@ public class DtoUtils {
 
     }
 
+    public static BorrowDto getBorrowDto(Borrow borrow) {
+        BorrowDto borrowDto = new BorrowDto();
+
+        borrowDto.setClientDto(getClientDTO(borrow.getClient()));
+        borrowDto.setDocumentDto(getDocumentDto(borrow.getDocument()));
+        borrowDto.setLocalDateTimeOfBorrow(borrowDto.getLocalDateTimeOfBorrow());
+        borrowDto.setLocalDateTimeOfReturn(borrow.getLocalDateTimeOfReturn());
+        return borrowDto;
+    }
+
+    public static List<BorrowDto> getBorrowsDto(List<Borrow> borrows) {
+        List<BorrowDto> borrowDtos = new ArrayList<>();
+        for(Borrow b : borrows){
+            borrowDtos.add(getBorrowDto(b));
+        }
+        return borrowDtos;
+
+    }
+
     public static List<DocumentDto> getDocumentsDto(List<Document> documents) {
         List<DocumentDto> documentDtos = new ArrayList<>();
         for (Document d : documents) {
@@ -90,4 +109,8 @@ public class DtoUtils {
         }
         return documentDtos;
     }
+
+
+
+
 }

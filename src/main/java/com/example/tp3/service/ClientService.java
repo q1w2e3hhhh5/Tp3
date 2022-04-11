@@ -1,9 +1,7 @@
 package com.example.tp3.service;
 
 import com.example.tp3.model.*;
-import com.example.tp3.repository.BorrowRepository;
-import com.example.tp3.repository.ClientRepository;
-import com.example.tp3.repository.DocumentRepository;
+import com.example.tp3.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +16,14 @@ public class ClientService {
     @Autowired
     private DocumentRepository documentRepository;
 
-
     @Autowired
     private BorrowRepository borrowRepository;
 
-    public Client createClient(String email, String password, String fullName/*, List<Document> borrows*/) {
-        Client client = Client.builder().email(email).password(password).fullName(fullName)/*.borrows(borrows)*/.fee(0).build();
+    @Autowired
+    private BorrowService borrowService;
+
+    public Client createClient(String email, String password, String fullName) {
+        Client client = Client.builder().email(email).password(password).fullName(fullName).fee(0).build();
         return clientRepository.save(client);
     }
 
@@ -38,21 +38,26 @@ public class ClientService {
         clientRepository.save(client);
     }
 
+    @Transactional
     public void borrowDocument(Long clientId, Long documentId) {
         this.findClientById(clientId);
+        var clientOpt = this.findClientById(clientId);
+        var documentOpt = this.findDocumentById(documentId);
 
+        if(clientOpt.isEmpty() || documentOpt.isEmpty()){return;}
+        var client = clientOpt.get();
+        var document = documentOpt.get();
 
-        Borrow borrow = new Borrow(this.findDocumentById(documentId));
+        Borrow borrow = borrowService.createBorrow(document,client);
 
-        //clientRepository.findBy
+        client.addBorrow(borrow);
+        document.setQuantity(document.getQuantity()-1);
 
+        documentRepository.save(document);
+        clientRepository.save(client);
     }
 
-    public void findListOfBorrowsByClient(int clientId) {
-        //   return clientRepository.find
-    }
-
-    public Optional<Client> findClientById(Long id) {
+    private Optional<Client> findClientById(Long id) {
         return clientRepository.findById(id);
     }
 
@@ -60,19 +65,4 @@ public class ClientService {
         return documentRepository.findById(id);
     }
 
-/*    public DocumentDto findDocumentById(Long id){
-        Document document = documentRepository.findById(id);
-        DocumentDto documentDto = DtoUtils.getDocumentDto(document);
-        return documentDto;
-
-    }*/
-
-
-
-    /*
-      public void borrowDocument(Document document) {
-        Borrow borrow = Borrow.builder(document, LocalDateTime.now(),LocalDateTime.now().plusWeeks(document.getBorrowTimePeriod()));
-        return;borrowRepository.save(borrow);
-    }
-    */
 }

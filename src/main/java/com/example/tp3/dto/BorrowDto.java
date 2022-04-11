@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 public class BorrowDto {
     private long id;
     private DocumentDto documentDto;
+    private ClientDto clientDto;
     private LocalDateTime localDateTimeOfBorrow;
     private LocalDateTime localDateTimeOfReturn;
 

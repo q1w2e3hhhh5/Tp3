@@ -24,6 +24,9 @@ public class Main implements CommandLineRunner {
     @Autowired
     private DocumentService documentService;
 
+    @Autowired
+    private BorrowService borrowService;
+
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
@@ -47,13 +50,19 @@ public class Main implements CommandLineRunner {
         final Dvd dvd = employeeService.createDvd("Kung fu panda", 1990, "me", "disney?", "family", 68, 50);
 
 
-        /*todo must complete the borrow part
-        clientService.borrowDocument(dvd);
-        final Borrow borrow = clientService.borrowDocument(dvd);
-        */
-
-        //     System.out.println(documentService.findDocumentsByTitle("Marvel"));
+        System.out.println("Before borrow");
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
+        clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
+        System.out.println("After borrow");
+        System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
+
+/*        clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
+        System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
+        System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));*/
+
+
+        //System.out.println("****************BORROW SERVICE******************");
+        //System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));
 
 
         //clientService.borrowDocument(3,5);
@@ -69,7 +78,7 @@ public class Main implements CommandLineRunner {
 
 
         // System.out.println(adminService.findAllAdmin());
-
+        /*
         System.out.println("******* Client Service search *******");
         System.out.println(documentService.findDocuments());
         System.out.println(documentService.findDocumentsByTitle("bob"));
@@ -80,7 +89,7 @@ public class Main implements CommandLineRunner {
         System.out.println(documentService.findAllBooks());
         System.out.println(documentService.findAllCds());
         System.out.println(documentService.findAllDvds());
- /*
+
         System.out.println("******* Fee Service *******");
         employeeService.chargeFee(clientMadeByClientService, 10);
         employeeService.chargeFee(clientMadeByEmployeeService, 50);

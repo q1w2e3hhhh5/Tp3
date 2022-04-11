@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,6 +33,7 @@ public class Client {
         this.email = email;
         this.password = password;
         this.fullName = fullName;
+        this.borrows = new ArrayList<>();
     }
 
     @Override
@@ -44,4 +46,10 @@ public class Client {
                 "\t\t" + "Fee To Pay : " + fee + "\n" +
                 "\t\t" + "List of borrows : " + borrows + "\n";
     }
+
+    public void addBorrow(Borrow borrow){
+        borrows.add(borrow);
+        borrow.setClient(this);
+    }
+
 }
