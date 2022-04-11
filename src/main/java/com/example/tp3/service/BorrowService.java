@@ -29,8 +29,16 @@ public class BorrowService {
     }
 
     @Transactional
-    public List<BorrowDto> findBorrowsByClient(Long clientId){
+    public List<BorrowDto> findBorrowsByClientId(Long clientId){
         List<Borrow> borrows = borrowRepository.findBorrowByClient_Id(clientId);
+        List<BorrowDto> borrowDtos  = DtoUtils.getBorrowsDto(borrows);
+        return borrowDtos;
+    }
+
+
+    @Transactional
+    public List<BorrowDto> findBorrowsByClientEmail(String email){
+        List<Borrow> borrows = borrowRepository.findBorrowByClient_Email(email);
         List<BorrowDto> borrowDtos  = DtoUtils.getBorrowsDto(borrows);
         return borrowDtos;
     }

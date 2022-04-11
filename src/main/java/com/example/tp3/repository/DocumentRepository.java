@@ -18,4 +18,7 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
     List<Document> findDocumentsByEditor(String editor);
 
     List<Document> findByDocumentType(String type);
+
+    Document findDocumentByTitle(String title);
+
 }

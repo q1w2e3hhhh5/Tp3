@@ -34,31 +34,35 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        final Admin admin = adminService.createAdmin("admin@gmail.com", "admin", "Steve admin");
+        adminService.createAdmin("admin@gmail.com", "admin", "Steve admin");
 
-        final Employee employee = employeeService.createEmployee("Employe1", "q1w2e3", "Bob the builder");
+        employeeService.createEmployee("Employe1", "q1w2e3", "Bob the builder");
 
-        final Client clientMadeByClientService = clientService.createClient("salah@gmail.com", "1234", "Salah");
-        final Client clientMadeByEmployeeService = employeeService.createClient("edine@gmail.com", "4321", "edine");
+        clientService.createClient("salah@gmail.com", "1234", "Salah");
+        employeeService.createClient("edine@gmail.com", "4321", "edine");
 
-        final Book book0 = employeeService.createBook("Marvel", 189, "stan lee", "action", "Amazon", 1990, 10);
-        final Book book1 = employeeService.createBook("Hello kitty", 12, "me", "Horror", "Amazon", 2000, 5);
-        final Book book2 = employeeService.createBook("Hello bob the builder", 189, "you", "sci-fi", "Amazon", 2022, 10);
+        employeeService.createBook("Marvel", 189, "stan lee", "action", "Amazon", 1990, 10);
+        employeeService.createBook("Hello kitty", 12, "me", "Horror", "Amazon", 2000, 5);
+        employeeService.createBook("Hello bob the builder", 189, "you", "sci-fi", "Amazon", 2022, 10);
 
-        final Cd cd = employeeService.createCd("Billie Jeans", 1990, "MJ", "MJ", "Country", 28, 30);
+        employeeService.createCd("Billie Jeans", 1990, "MJ", "MJ", "Country", 28, 30);
 
-        final Dvd dvd = employeeService.createDvd("Kung fu panda", 1990, "me", "disney?", "family", 68, 50);
+        employeeService.createDvd("Kung fu panda", 1990, "me", "disney?", "family", 68, 50);
+
+        clientService.borrowDocument("salah@gmail.com","Billie Jeans");
 
 
-        System.out.println("Before borrow");
+        System.out.println(borrowService.findBorrowsByClientEmail("salah@gmail.com"));
+
+        /*System.out.println("Before borrow");
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
         clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
         System.out.println("After borrow");
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
 
-/*        clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
+*//*        clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
-        System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));*/
+        System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));*//*
 
 
         //System.out.println("****************BORROW SERVICE******************");
@@ -78,6 +82,7 @@ public class Main implements CommandLineRunner {
 
 
         // System.out.println(adminService.findAllAdmin());
+        */
         /*
         System.out.println("******* Client Service search *******");
         System.out.println(documentService.findDocuments());

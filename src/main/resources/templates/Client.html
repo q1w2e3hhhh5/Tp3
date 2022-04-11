@@ -8,6 +8,7 @@
 
 <table>
     <thead>
+    <th>Id</th>
     <th>Full name</th>
     <th>Email</th>
     <th>Password</th>
@@ -16,6 +17,7 @@
     <tbody>
     <th:block th:each="client, stat : ${clients}">
         <tr>
+            <td th:text="${client.getId}"></td>
             <td th:text="${client.getFullName}"></td>
             <td th:text="${client.getEmail()}"></td>
             <td th:text="${client.getPassword()}"></td>

@@ -9,5 +9,7 @@ public interface BorrowRepository extends JpaRepository<Borrow, Long> {
 
     List<Borrow> findBorrowByClient_Id(long id);
 
+    List<Borrow> findBorrowByClient_Email(String email);
+
 
 }

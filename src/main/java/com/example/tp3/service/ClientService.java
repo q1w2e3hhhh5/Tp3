@@ -45,19 +45,43 @@ public class ClientService {
         var clientOpt = this.findClientById(clientId);
         var documentOpt = this.findDocumentById(documentId);
 
-        if(clientOpt.isEmpty() || documentOpt.isEmpty()){return;}
+        if (clientOpt.isEmpty() || documentOpt.isEmpty()) {
+            return;
+        }
         var client = clientOpt.get();
         var document = documentOpt.get();
 
-        Borrow borrow = borrowService.createBorrow(document,client);
+        Borrow borrow = borrowService.createBorrow(document, client);
 
         client.addBorrow(borrow);
-        document.setQuantity(document.getQuantity()-1);
+        document.setQuantity(document.getQuantity() - 1);
 
         documentRepository.save(document);
         clientRepository.save(client);
     }
 
+    @Transactional
+    public void borrowDocument(String email, String documentTitle) {
+        var client = this.findClientByEmail(email);
+        var document = this.findDocumentByTitle(documentTitle);
+
+        Borrow borrow = borrowService.createBorrow(document, client);
+
+        client.addBorrow(borrow);
+        document.setQuantity(document.getQuantity() - 1);
+
+        documentRepository.save(document);
+        clientRepository.save(client);
+    }
+
+
+    private Client findClientByEmail(String email) {
+        return clientRepository.findByEmail(email);
+    }
+
+    private Document findDocumentByTitle(String documentTitle){
+        return documentRepository.findDocumentByTitle(documentTitle);
+    }
 
     private Optional<Client> findClientById(Long id) {
         return clientRepository.findById(id);
