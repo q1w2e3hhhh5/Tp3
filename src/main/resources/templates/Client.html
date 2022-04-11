@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <th>Full name</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Borrows?</th>
+    </thead>
+    <tbody>
+    <th:block th:each="client, stat : ${clients}">
+        <tr>
+            <td th:text="${client.getFullName}"></td>
+            <td th:text="${client.getEmail()}"></td>
+            <td th:text="${client.getPassword()}"></td>
+            <td th:text="${client.getBorrows()}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

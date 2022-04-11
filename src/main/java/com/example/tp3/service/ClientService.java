@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -56,6 +57,7 @@ public class ClientService {
         documentRepository.save(document);
         clientRepository.save(client);
     }
+
 
     private Optional<Client> findClientById(Long id) {
         return clientRepository.findById(id);
