@@ -43,5 +43,11 @@ public class BorrowService {
         return borrowDtos;
     }
 
+    public Borrow findBorrowByClient_EmailAndAndDocument_Title(String email, String documentTitle){
+        return borrowRepository.findBorrowByClient_EmailAndAndDocument_Title(email,documentTitle);
+    }
 
+    public void removeBorrowByDocument_Title(String title) {
+        borrowRepository.deleteByDocument_Title(title);
+    }
 }

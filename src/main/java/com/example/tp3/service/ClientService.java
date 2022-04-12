@@ -74,6 +74,21 @@ public class ClientService {
         clientRepository.save(client);
     }
 
+    @Transactional
+    public void returnDocument(String email, String documentTitle) {
+        var client = this.findClientByEmail(email);
+        var document = this.findDocumentByTitle(documentTitle);
+
+        var borrow = findBorrowOfClientByDocumentTitle(email,documentTitle);
+
+        client.removeBorrow(borrow);
+        borrowService.removeBorrowByDocument_Title(documentTitle);
+
+        document.setQuantity(document.getQuantity() + 1);
+
+        documentRepository.save(document);
+        clientRepository.save(client);
+    }
 
     private Client findClientByEmail(String email) {
         return clientRepository.findByEmail(email);
@@ -83,6 +98,10 @@ public class ClientService {
         return documentRepository.findDocumentByTitle(documentTitle);
     }
 
+    private Borrow findBorrowOfClientByDocumentTitle(String email,String documentTitle){
+        return borrowService.findBorrowByClient_EmailAndAndDocument_Title(email,documentTitle);
+    }
+
     private Optional<Client> findClientById(Long id) {
         return clientRepository.findById(id);
     }
@@ -90,5 +109,6 @@ public class ClientService {
     private Optional<Document> findDocumentById(Long id) {
         return documentRepository.findById(id);
     }
+
 
 }

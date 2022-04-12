@@ -52,4 +52,9 @@ public class Client {
         borrow.setClient(this);
     }
 
+    public void removeBorrow(Borrow borrow){
+        borrows.remove(borrow);
+        borrow.setClient(null);
+    }
+
 }

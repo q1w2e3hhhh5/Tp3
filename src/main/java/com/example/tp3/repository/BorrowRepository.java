@@ -12,4 +12,10 @@ public interface BorrowRepository extends JpaRepository<Borrow, Long> {
     List<Borrow> findBorrowByClient_Email(String email);
 
 
+    void deleteBorrowByDocumentTitle(String title);
+    void deleteByDocument_Title(String title);
+
+    Borrow findBorrowByClient_EmailAndAndDocument_Title(String email,String title);
+
+
 }

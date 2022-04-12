@@ -49,10 +49,19 @@ public class Main implements CommandLineRunner {
 
         employeeService.createDvd("Kung fu panda", 1990, "me", "disney?", "family", 68, 50);
 
+        System.out.println(documentService.findDocumentsByTitle("Billie Jeans"));
+
+
+
+        System.out.println("borrow doc");
         clientService.borrowDocument("salah@gmail.com","Billie Jeans");
 
 
+        System.out.println("returned doc");
+        clientService.returnDocument("salah@gmail.com","Billie Jeans");
+
         System.out.println(borrowService.findBorrowsByClientEmail("salah@gmail.com"));
+
 
         /*System.out.println("Before borrow");
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
@@ -60,30 +69,30 @@ public class Main implements CommandLineRunner {
         System.out.println("After borrow");
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
 
-*//*        clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
+        clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
-        System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));*//*
+        System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));
 
 
-        //System.out.println("****************BORROW SERVICE******************");
-        //System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));
+        System.out.println("****************BORROW SERVICE******************");
+        System.out.println(borrowService.findBorrowsByClient(clientMadeByClientService.getId()));
 
 
-        //clientService.borrowDocument(3,5);
+        clientService.borrowDocument(3,5);
 
-        //System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
-
-
-        //System.out.println(employeeService.findAllClients());
-
-        //clientService.borrowDocument(clientMadeByClientService,dvd);
-        //clientService.borrowDocument(3,5);
-        //clientService.findListOfBorrowsByClient(3);
+        System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
 
 
-        // System.out.println(adminService.findAllAdmin());
-        */
-        /*
+        System.out.println(employeeService.findAllClients());
+
+        clientService.borrowDocument(clientMadeByClientService,dvd);
+        clientService.borrowDocument(3,5);
+        clientService.findListOfBorrowsByClient(3);
+
+
+        System.out.println(adminService.findAllAdmin());
+
+
         System.out.println("******* Client Service search *******");
         System.out.println(documentService.findDocuments());
         System.out.println(documentService.findDocumentsByTitle("bob"));
@@ -104,8 +113,8 @@ public class Main implements CommandLineRunner {
         clientService.payFee(clientMadeByClientService, 30);
         clientService.payFee(clientMadeByEmployeeService, 30);
         System.out.println("******* After *******");
-        System.out.println(employeeService.findAllClients());*/
-
+        System.out.println(employeeService.findAllClients());
+*/
 
     }
 }
