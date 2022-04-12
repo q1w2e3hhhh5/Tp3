@@ -27,8 +27,8 @@ public class EmployeeService {
         return adminRepository.save(new Employee(email, passwords, fullName));
     }
 
-    public Client createClient(String email, String password, String fullName/*, List<Document> borrows*/) {
-        Client client = Client.builder().email(email).password(password).fullName(fullName)/*.borrows(borrows)*/.fee(0).build();
+    public Client createClient(String email, String password, String fullName) {
+        Client client = Client.builder().email(email).password(password).fullName(fullName).fee(0).build();
         return clientRepository.save(client);
     }
 

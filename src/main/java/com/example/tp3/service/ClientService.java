@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -16,9 +15,6 @@ public class ClientService {
 
     @Autowired
     private DocumentRepository documentRepository;
-
-    @Autowired
-    private BorrowRepository borrowRepository;
 
     @Autowired
     private BorrowService borrowService;
@@ -32,7 +28,7 @@ public class ClientService {
     public void payFee(Client client, int amount) {
         if (client.getFee() - amount < 0) {
             client.setFee(0);
-            clientRepository.save(client); //just give him his money back
+            clientRepository.save(client);
             return;
         }
         client.setFee(client.getFee() - amount);
@@ -79,7 +75,7 @@ public class ClientService {
         var client = this.findClientByEmail(email);
         var document = this.findDocumentByTitle(documentTitle);
 
-        var borrow = findBorrowOfClientByDocumentTitle(email,documentTitle);
+        var borrow = findBorrowOfClientByDocumentTitle(email, documentTitle);
 
         client.removeBorrow(borrow);
         borrowService.removeBorrowByDocument_Title(documentTitle);
@@ -94,12 +90,12 @@ public class ClientService {
         return clientRepository.findByEmail(email);
     }
 
-    private Document findDocumentByTitle(String documentTitle){
+    private Document findDocumentByTitle(String documentTitle) {
         return documentRepository.findDocumentByTitle(documentTitle);
     }
 
-    private Borrow findBorrowOfClientByDocumentTitle(String email,String documentTitle){
-        return borrowService.findBorrowByClient_EmailAndAndDocument_Title(email,documentTitle);
+    private Borrow findBorrowOfClientByDocumentTitle(String email, String documentTitle) {
+        return borrowService.findBorrowByClient_EmailAndAndDocument_Title(email, documentTitle);
     }
 
     private Optional<Client> findClientById(Long id) {

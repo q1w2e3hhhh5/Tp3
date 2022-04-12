@@ -16,7 +16,6 @@ public class ClientDto {
 
     List<BorrowDto> borrows = new ArrayList<>();
 
-
     public void addBorrow(BorrowDto borrow) {
         borrows.add(borrow);
     }

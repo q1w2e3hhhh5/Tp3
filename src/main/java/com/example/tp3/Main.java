@@ -48,22 +48,13 @@ public class Main implements CommandLineRunner {
         employeeService.createCd("Billie Jeans", 1990, "MJ", "MJ", "Country", 28, 30);
 
         employeeService.createDvd("Kung fu panda", 1990, "me", "disney?", "family", 68, 50);
-
+        clientService.borrowDocument("salah@gmail.com","Billie Jeans");
+        clientService.returnDocument("salah@gmail.com","Billie Jeans");
+        borrowService.findBorrowsByClientEmail("salah@gmail.com");
+        /*
         System.out.println(documentService.findDocumentsByTitle("Billie Jeans"));
 
-
-
-        System.out.println("borrow doc");
-        clientService.borrowDocument("salah@gmail.com","Billie Jeans");
-
-
-        System.out.println("returned doc");
-        clientService.returnDocument("salah@gmail.com","Billie Jeans");
-
-        System.out.println(borrowService.findBorrowsByClientEmail("salah@gmail.com"));
-
-
-        /*System.out.println("Before borrow");
+        System.out.println("Before borrow");
         System.out.println(employeeService.findClientByEmail("salah@gmail.com"));
         clientService.borrowDocument(clientMadeByClientService.getId(), dvd.getId());
         System.out.println("After borrow");
