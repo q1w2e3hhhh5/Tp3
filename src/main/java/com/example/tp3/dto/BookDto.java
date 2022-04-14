@@ -1,4 +1,10 @@
 package com.example.tp3.dto;
 
-public class BookDto {
+import lombok.Data;
+
+@Data
+public class BookDto extends DocumentDto {
+
+    private int nbPages;
+
 }

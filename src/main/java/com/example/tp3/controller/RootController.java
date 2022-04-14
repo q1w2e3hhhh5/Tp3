@@ -1,6 +1,8 @@
 package com.example.tp3.controller;
 
 import com.example.tp3.dto.*;
+import com.example.tp3.model.Book;
+import com.example.tp3.model.Cd;
 import com.example.tp3.model.Client;
 import com.example.tp3.model.Dvd;
 import com.example.tp3.service.ClientService;
@@ -12,17 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class RootController {
@@ -95,8 +91,8 @@ public class RootController {
     @GetMapping("/CreateDocument")
     public String getCreateDocuments(Model model) {
         model.addAttribute("dvd",new DvdDto());
-/*        model.addAttribute("cd",new CdDto());
-        model.addAttribute("book",new BookDto());*/
+        model.addAttribute("cd",new CdDto());
+        model.addAttribute("book",new BookDto());
         return "CreateDocument";
     }
 
@@ -112,6 +108,32 @@ public class RootController {
         redirectView.setUrl("/Documents");          //this one more precisely
         return redirectView;
     }
+
+
+    @PostMapping("/CdCreate")
+    public RedirectView cdPost(@ModelAttribute CdDto cdDto, RedirectAttributes redirectAttributes) {
+        final Cd cd = employeeService.createCd(cdDto);
+        cdDto.setId(cd.getId());
+
+        redirectAttributes.addFlashAttribute("cd", cdDto);
+        RedirectView redirectView = new RedirectView();//this goes to the next mapping thingy...
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/Documents");          //this one more precisely
+        return redirectView;
+    }
+
+    @PostMapping("/BookCreate")
+    public RedirectView bookPost(@ModelAttribute BookDto bookDto, RedirectAttributes redirectAttributes) {
+        final Book book = employeeService.createBook(bookDto);
+        bookDto.setId(book.getId());
+
+        redirectAttributes.addFlashAttribute("book", bookDto);
+        RedirectView redirectView = new RedirectView();//this goes to the next mapping thingy...
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/Documents");          //this one more precisely
+        return redirectView;
+    }
+
 
     /*
 

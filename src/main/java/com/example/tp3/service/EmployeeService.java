@@ -1,5 +1,7 @@
 package com.example.tp3.service;
 
+import com.example.tp3.dto.BookDto;
+import com.example.tp3.dto.CdDto;
 import com.example.tp3.dto.DvdDto;
 import com.example.tp3.model.*;
 import com.example.tp3.repository.*;
@@ -39,11 +41,28 @@ public class EmployeeService {
         return documentRepository.save(book);
     }
 
+    public Book createBook(BookDto bookDto) {
+        Book book = Book.builder().title(bookDto.getTitle()).nbPages(bookDto.getNbPages()).
+                category(bookDto.getCategory()).author(bookDto.getAuthor()).editor(bookDto.getEditor()).
+                publicationYear(bookDto.getPublicationYear()).documentType("Book").
+                quantity(bookDto.getQuantity()).borrowTimePeriod(3).build();
+        return documentRepository.save(book);
+    }
+
     public Cd createCd(String title, int publicationYear, String author, String editor, String category, int timeLength, int quantity) {
         Cd cd = Cd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).
                 genre(category).timeLength(timeLength).documentType("Cd").quantity(quantity).borrowTimePeriod(2).build();
         return documentRepository.save(cd);
     }
+
+    public Cd createCd(CdDto cdDto) {
+        Cd cd = Cd.builder().title(cdDto.getTitle()).publicationYear(cdDto.getPublicationYear()).
+                author(cdDto.getAuthor()).editor(cdDto.getEditor()).
+                genre(cdDto.getCategory()).timeLength(cdDto.getTimeLength()).documentType("Cd").
+                quantity(cdDto.getQuantity()).borrowTimePeriod(2).build();
+        return documentRepository.save(cd);
+    }
+
 
     public Dvd createDvd(String title, int publicationYear, String author, String editor, String category, int timeLength, int quantity) {
         Dvd dvd = Dvd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).
