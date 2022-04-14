@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Document Creator</title>
+</head>
+<body>
+
+<h1> Create DVD </h1>
+<form action="#" th:action="@{/DvdCreate}" th:object="${Dvd}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table border="1">
+        <tr>
+            <td><label>Title</label></td>
+            <td><input type="text" th:field="*{title}" /></td>
+        </tr>
+        <tr>
+            <td><label>Publication year</label></td>
+            <td><input type="number" th:field="*{publicationYear}" /></td>
+        </tr>
+        <tr>
+            <td><label>Author</label></td>
+            <td><input type="text" th:field="*{author}" /></td>
+        </tr>
+        <tr>
+            <td><label>Editor</label></td>
+            <td><input type="text" th:field="*{editor}" /></td>
+        </tr>
+        <tr>
+            <td><label>Category</label></td>
+            <td><input type="text" th:field="*{category}" /></td>
+        </tr>
+        <tr>
+            <td><label>Document Type</label></td>
+            <td><input type="text" th:field="*{documentType}" /></td>
+        </tr>
+        <tr>
+            <td><label>Quantity</label></td>
+            <td><input type="number" th:field="*{quantity}" /></td>
+        </tr>
+        <tr>
+            <td><label>Borrow Time Period</label></td>
+            <td><input type="number" th:field="*{borrowTimePeriod}" /></td>
+        </tr>
+        <tr>
+            <td><label>Time Length</label></td>
+            <td><input type="number" th:field="*{TimeLength}" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Sauve" /></td>
+        </tr>
+    </table>
+</form>
+
+
+
+<h1> Create CD </h1>
+<form action="#" th:action="@{/CdCreate}" th:object="${Cd}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table border="1">
+        <tr>
+            <td><label>Title</label></td>
+            <td><input type="text" th:field="*{title}" /></td>
+        </tr>
+        <tr>
+            <td><label>Publication year</label></td>
+            <td><input type="number" th:field="*{publicationYear}" /></td>
+        </tr>
+        <tr>
+            <td><label>Author</label></td>
+            <td><input type="text" th:field="*{author}" /></td>
+        </tr>
+        <tr>
+            <td><label>Editor</label></td>
+            <td><input type="text" th:field="*{editor}" /></td>
+        </tr>
+        <tr>
+            <td><label>Category</label></td>
+            <td><input type="text" th:field="*{category}" /></td>
+        </tr>
+        <tr>
+            <td><label>Document Type</label></td>
+            <td><input type="text" th:field="*{documentType}" /></td>
+        </tr>
+        <tr>
+            <td><label>Quantity</label></td>
+            <td><input type="number" th:field="*{quantity}" /></td>
+        </tr>
+        <tr>
+            <td><label>Borrow Time Period</label></td>
+            <td><input type="number" th:field="*{borrowTimePeriod}" /></td>
+        </tr>
+        <tr>
+            <td><label>Time Length</label></td>
+            <td><input type="number" th:field="*{TimeLength}" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Sauve" /></td>
+        </tr>
+    </table>
+</form>
+
+
+
+<h1> Create Book </h1>
+<form action="#" th:action="@{/BookCreate}" th:object="${Book}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table border="1">
+        <tr>
+            <td><label>Title</label></td>
+            <td><input type="text" th:field="*{title}" /></td>
+        </tr>
+        <tr>
+            <td><label>Publication year</label></td>
+            <td><input type="number" th:field="*{publicationYear}" /></td>
+        </tr>
+        <tr>
+            <td><label>Author</label></td>
+            <td><input type="text" th:field="*{author}" /></td>
+        </tr>
+        <tr>
+            <td><label>Editor</label></td>
+            <td><input type="text" th:field="*{editor}" /></td>
+        </tr>
+        <tr>
+            <td><label>Category</label></td>
+            <td><input type="text" th:field="*{category}" /></td>
+        </tr>
+        <tr>
+            <td><label>Document Type</label></td>
+            <td><input type="text" th:field="*{documentType}" /></td>
+        </tr>
+        <tr>
+            <td><label>Quantity</label></td>
+            <td><input type="number" th:field="*{quantity}" /></td>
+        </tr>
+        <tr>
+            <td><label>Borrow Time Period</label></td>
+            <td><input type="number" th:field="*{borrowTimePeriod}" /></td>
+        </tr>
+        <tr>
+            <td><label>Number Of Pages</label></td>
+            <td><input type="number" th:field="*{nbPages}" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Sauve" /></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

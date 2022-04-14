@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Library</title>
@@ -8,5 +8,8 @@
 <h1 th:text="${h1Text}">Page index</h1>
 <a th:href="@{'/Client'}">Clients</a>
 <a th:href="@{'/Documents'}">Documents</a>
+<a th:href="@{'/CreateDocument'}">Create document</a>
+<a th:href="@{'/findDocumentByx'}">Find Document By Something</a>
+<a th:href="@{'/CreateClient'}">Create Client</a>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.example.tp3.service;
 
+import com.example.tp3.dto.ClientDto;
 import com.example.tp3.model.*;
 import com.example.tp3.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class ClientService {
 
     public Client createClient(String email, String password, String fullName) {
         Client client = Client.builder().email(email).password(password).fullName(fullName).fee(0).build();
+        return clientRepository.save(client);
+    }
+
+    public Client createClient(ClientDto clientDto){
+        Client client = Client.builder().email(clientDto.getEmail()).password(clientDto.getPassword()).fullName(clientDto.getFullName()).fee(0).build();
         return clientRepository.save(client);
     }
 
@@ -106,5 +112,7 @@ public class ClientService {
         return documentRepository.findById(id);
     }
 
-
+    public Optional<Client> findProfById(long id) {
+        return clientRepository.findById(id);
+    }
 }
