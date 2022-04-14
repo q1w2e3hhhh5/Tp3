@@ -1,9 +1,8 @@
 package com.example.tp3.controller;
 
-import com.example.tp3.dto.ClientDto;
-import com.example.tp3.dto.DocumentDto;
-import com.example.tp3.dto.DocumentSearchForm;
+import com.example.tp3.dto.*;
 import com.example.tp3.model.Client;
+import com.example.tp3.model.Dvd;
 import com.example.tp3.service.ClientService;
 import com.example.tp3.service.DocumentService;
 import com.example.tp3.service.EmployeeService;
@@ -79,9 +78,8 @@ public class RootController {
     }
 
 
-
     @PostMapping("/CreateClient")
-    public RedirectView clientPost(@ModelAttribute ClientDto clientDto, Model model,RedirectAttributes redirectAttributes) {
+    public RedirectView clientPost(@ModelAttribute ClientDto clientDto, RedirectAttributes redirectAttributes) {
         final Client client = clientService.createClient(clientDto);
         clientDto.setId(client.getId());
 
@@ -94,7 +92,28 @@ public class RootController {
     }
 
 
-/*
+    @GetMapping("/CreateDocument")
+    public String getCreateDocuments(Model model) {
+        model.addAttribute("dvd",new DvdDto());
+/*        model.addAttribute("cd",new CdDto());
+        model.addAttribute("book",new BookDto());*/
+        return "CreateDocument";
+    }
+
+
+    @PostMapping("/DvdCreate")
+    public RedirectView dvdPost(@ModelAttribute DvdDto dvdDto, RedirectAttributes redirectAttributes) {
+        final Dvd dvd = employeeService.createDvd(dvdDto);
+        dvdDto.setId(dvd.getId());
+
+        redirectAttributes.addFlashAttribute("dvd", dvdDto);
+        RedirectView redirectView = new RedirectView();//this goes to the next mapping thingy...
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/Documents");          //this one more precisely
+        return redirectView;
+    }
+
+    /*
 
     @PostMapping("/findDocumentByx")
     public String findDocumentBy(Model model,@ModelAttribute DocumentSearchForm documentSearchForm){

@@ -1,5 +1,6 @@
 package com.example.tp3.service;
 
+import com.example.tp3.dto.DvdDto;
 import com.example.tp3.model.*;
 import com.example.tp3.repository.*;
 import com.example.tp3.dto.ClientDto;
@@ -49,6 +50,21 @@ public class EmployeeService {
                 category(category).timeLength(timeLength).documentType("Dvd").quantity(quantity).borrowTimePeriod(1).build();
         return documentRepository.save(dvd);
     }
+
+    public Client createClient(ClientDto clientDto){
+        Client client = Client.builder().email(clientDto.getEmail()).password(clientDto.getPassword()).fullName(clientDto.getFullName()).fee(0).build();
+        return clientRepository.save(client);
+    }
+
+    public Dvd createDvd(DvdDto dvdDto){
+        Dvd dvd = Dvd.builder().title(dvdDto.getTitle()).publicationYear(dvdDto.getPublicationYear()).
+                author(dvdDto.getAuthor()).editor(dvdDto.getEditor()).
+                category(dvdDto.getCategory()).timeLength(dvdDto.getTimeLength())
+                .documentType("Dvd").quantity(dvdDto.getQuantity()).borrowTimePeriod(1).build();
+        return documentRepository.save(dvd);
+    }
+
+
 
     public void chargeFee(Client client, int amount) {
         client.setFee(client.getFee() + amount);
