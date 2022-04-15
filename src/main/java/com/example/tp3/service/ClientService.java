@@ -25,8 +25,10 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    public Client createClient(ClientDto clientDto){
-        Client client = Client.builder().email(clientDto.getEmail()).password(clientDto.getPassword()).fullName(clientDto.getFullName()).fee(0).build();
+    public Client createClient(ClientDto clientDto) {
+        Client client = Client.builder().email(clientDto.getEmail()).
+                password(clientDto.getPassword()).
+                fullName(clientDto.getFullName()).fee(0).build();
         return clientRepository.save(client);
     }
 
@@ -110,9 +112,5 @@ public class ClientService {
 
     private Optional<Document> findDocumentById(Long id) {
         return documentRepository.findById(id);
-    }
-
-    public Optional<Client> findProfById(long id) {
-        return clientRepository.findById(id);
     }
 }

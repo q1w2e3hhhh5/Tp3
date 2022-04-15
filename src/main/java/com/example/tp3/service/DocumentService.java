@@ -51,9 +51,9 @@ public class DocumentService {
     }
 
     public List<DocumentDto> findAllBooks() {
-       List<Document> documents = documentRepository.findByDocumentType("Book");
-       List<DocumentDto> documentDtos = DtoUtils.getBooksDto(documents);
-       return documentDtos;
+        List<Document> documents = documentRepository.findByDocumentType("Book");
+        List<DocumentDto> documentDtos = DtoUtils.getBooksDto(documents);
+        return documentDtos;
     }
 
     public List<DocumentDto> findAllCds() {

@@ -17,34 +17,27 @@ public class BorrowService {
     @Autowired
     private BorrowRepository borrowRepository;
 
-    @Autowired
-    private ClientRepository clientRepository;
-
-    @Autowired
-    private DocumentRepository documentRepository;
-
-    public Borrow createBorrow(Document document, Client client){
+    public Borrow createBorrow(Document document, Client client) {
         Borrow borrow = Borrow.builder().document(document).client(client).build();
         return borrowRepository.save(borrow);
     }
 
     @Transactional
-    public List<BorrowDto> findBorrowsByClientId(Long clientId){
+    public List<BorrowDto> findBorrowsByClientId(Long clientId) {
         List<Borrow> borrows = borrowRepository.findBorrowByClient_Id(clientId);
-        List<BorrowDto> borrowDtos  = DtoUtils.getBorrowsDto(borrows);
+        List<BorrowDto> borrowDtos = DtoUtils.getBorrowsDto(borrows);
         return borrowDtos;
     }
-
 
     @Transactional
-    public List<BorrowDto> findBorrowsByClientEmail(String email){
+    public List<BorrowDto> findBorrowsByClientEmail(String email) {
         List<Borrow> borrows = borrowRepository.findBorrowByClient_Email(email);
-        List<BorrowDto> borrowDtos  = DtoUtils.getBorrowsDto(borrows);
+        List<BorrowDto> borrowDtos = DtoUtils.getBorrowsDto(borrows);
         return borrowDtos;
     }
 
-    public Borrow findBorrowByClient_EmailAndAndDocument_Title(String email, String documentTitle){
-        return borrowRepository.findBorrowByClient_EmailAndAndDocument_Title(email,documentTitle);
+    public Borrow findBorrowByClient_EmailAndAndDocument_Title(String email, String documentTitle) {
+        return borrowRepository.findBorrowByClient_EmailAndAndDocument_Title(email, documentTitle);
     }
 
     public void removeBorrowByDocument_Title(String title) {

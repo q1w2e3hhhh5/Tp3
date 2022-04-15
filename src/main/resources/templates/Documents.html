@@ -5,23 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-<table>
+<table border="1">
     <thead>
-    <th>Id</th>
-    <th>Title</th>
-    <th>Publication Year</th>
-    <th>Author</th>
-    <th>Editor</th>
+    <th>Titre</th>
+    <th>Année de Publication</th>
+    <th>Auteur</th>
+    <th>Editeur</th>
     <th>Category</th>
-    <th>Document Type</th>
-    <th>Quantity</th>
-    <th>Borrow Time Period</th>
-    <th>Quantity</th>
+    <th>Type de document</th>
+    <th>Periode d'emprunt</th>
+    <th>Quantité</th>
     </thead>
     <tbody>
     <th:block th:each="document, stat : ${documents}">
         <tr>
-            <td th:text="${document.getId()}"></td>
             <td th:text="${document.getTitle()}"></td>
             <td th:text="${document.getPublicationYear()}"></td>
             <td th:text="${document.getAuthor()}"></td>

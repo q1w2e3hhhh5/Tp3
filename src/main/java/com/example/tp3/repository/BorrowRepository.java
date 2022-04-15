@@ -15,7 +15,7 @@ public interface BorrowRepository extends JpaRepository<Borrow, Long> {
 
     void deleteByDocument_Title(String title);
 
-    Borrow findBorrowByClient_EmailAndAndDocument_Title(String email,String title);
+    Borrow findBorrowByClient_EmailAndAndDocument_Title(String email, String title);
 
 
 }

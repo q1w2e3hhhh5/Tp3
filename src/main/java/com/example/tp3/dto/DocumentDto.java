@@ -15,8 +15,4 @@ public class DocumentDto {
     private int quantity;
     private long borrowTimePeriod;
 
-
-
-
-
 }

@@ -28,14 +28,14 @@ public class Borrow {
     private LocalDateTime localDateTimeOfBorrow;
     private LocalDateTime localDateTimeOfReturn;
 
-    public Borrow(Document documentById,Client client) {
+    public Borrow(Document documentById, Client client) {
         this.document = documentById;
         this.localDateTimeOfBorrow = LocalDateTime.now();
-        if(document.getDocumentType().equals("Book")){
+        if (document.getDocumentType().equals("Book")) {
             this.localDateTimeOfReturn = LocalDateTime.now().plusWeeks(3);
-        }else if(document.getDocumentType().equals("Cd")){
+        } else if (document.getDocumentType().equals("Cd")) {
             this.localDateTimeOfReturn = LocalDateTime.now().plusWeeks(2);
-        }else if (document.getDocumentType().equals("Dvd")){
+        } else if (document.getDocumentType().equals("Dvd")) {
             this.localDateTimeOfReturn = LocalDateTime.now().plusWeeks(1);
         }
         this.client = client;

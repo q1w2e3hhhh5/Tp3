@@ -35,23 +35,32 @@ public class EmployeeService {
         return clientRepository.save(client);
     }
 
-    public Book createBook(String title, int nbPages, String author, String category, String editor, int publicationYear, int quantity) {
-        Book book = Book.builder().title(title).nbPages(nbPages).category(category).author(author).editor(editor).
-                publicationYear(publicationYear).documentType("Book").quantity(quantity).borrowTimePeriod(3).build();
+    public Book createBook(String title, int nbPages, String author,
+                           String category, String editor, int publicationYear, int quantity) {
+        Book book = Book.builder().title(title).nbPages(nbPages).
+                category(category).author(author).editor(editor).
+                publicationYear(publicationYear).documentType("Book").
+                quantity(quantity).borrowTimePeriod(3).build();
         return documentRepository.save(book);
     }
 
     public Book createBook(BookDto bookDto) {
-        Book book = Book.builder().title(bookDto.getTitle()).nbPages(bookDto.getNbPages()).
-                category(bookDto.getCategory()).author(bookDto.getAuthor()).editor(bookDto.getEditor()).
-                publicationYear(bookDto.getPublicationYear()).documentType("Book").
-                quantity(bookDto.getQuantity()).borrowTimePeriod(3).build();
+        Book book = Book.builder().title(bookDto.getTitle()).
+                nbPages(bookDto.getNbPages()).
+                category(bookDto.getCategory()).
+                author(bookDto.getAuthor()).editor(bookDto.getEditor()).
+                publicationYear(bookDto.getPublicationYear())
+                .documentType("Book").quantity(bookDto.getQuantity()).
+                borrowTimePeriod(3).build();
         return documentRepository.save(book);
     }
 
-    public Cd createCd(String title, int publicationYear, String author, String editor, String category, int timeLength, int quantity) {
-        Cd cd = Cd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).
-                genre(category).timeLength(timeLength).documentType("Cd").quantity(quantity).borrowTimePeriod(2).build();
+    public Cd createCd(String title, int publicationYear, String author,
+                       String editor, String category, int timeLength, int quantity) {
+        Cd cd = Cd.builder().title(title).publicationYear(publicationYear).
+                author(author).editor(editor).
+                genre(category).timeLength(timeLength).documentType("Cd").
+                quantity(quantity).borrowTimePeriod(2).build();
         return documentRepository.save(cd);
     }
 
@@ -64,25 +73,30 @@ public class EmployeeService {
     }
 
 
-    public Dvd createDvd(String title, int publicationYear, String author, String editor, String category, int timeLength, int quantity) {
-        Dvd dvd = Dvd.builder().title(title).publicationYear(publicationYear).author(author).editor(editor).
-                category(category).timeLength(timeLength).documentType("Dvd").quantity(quantity).borrowTimePeriod(1).build();
+    public Dvd createDvd(String title, int publicationYear, String author,
+                         String editor, String category, int timeLength, int quantity) {
+        Dvd dvd = Dvd.builder().title(title).
+                publicationYear(publicationYear).author(author).editor(editor).
+                category(category).timeLength(timeLength).documentType("Dvd").
+                quantity(quantity).borrowTimePeriod(1).build();
         return documentRepository.save(dvd);
     }
 
-    public Client createClient(ClientDto clientDto){
-        Client client = Client.builder().email(clientDto.getEmail()).password(clientDto.getPassword()).fullName(clientDto.getFullName()).fee(0).build();
+    public Client createClient(ClientDto clientDto) {
+        Client client = Client.builder().email(clientDto.getEmail()).
+                password(clientDto.getPassword()).
+                fullName(clientDto.getFullName()).fee(0).build();
         return clientRepository.save(client);
     }
 
-    public Dvd createDvd(DvdDto dvdDto){
-        Dvd dvd = Dvd.builder().title(dvdDto.getTitle()).publicationYear(dvdDto.getPublicationYear()).
+    public Dvd createDvd(DvdDto dvdDto) {
+        Dvd dvd = Dvd.builder().title(dvdDto.getTitle()).
+                publicationYear(dvdDto.getPublicationYear()).
                 author(dvdDto.getAuthor()).editor(dvdDto.getEditor()).
                 category(dvdDto.getCategory()).timeLength(dvdDto.getTimeLength())
                 .documentType("Dvd").quantity(dvdDto.getQuantity()).borrowTimePeriod(1).build();
         return documentRepository.save(dvd);
     }
-
 
 
     public void chargeFee(Client client, int amount) {

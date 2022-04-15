@@ -62,7 +62,7 @@ public class DtoUtils {
 
     public static List<BorrowDto> getBorrowsDto(List<Borrow> borrows) {
         List<BorrowDto> borrowDtos = new ArrayList<>();
-        for(Borrow b : borrows){
+        for (Borrow b : borrows) {
             borrowDtos.add(getBorrowDto(b));
         }
         return borrowDtos;
@@ -109,8 +109,6 @@ public class DtoUtils {
         }
         return documentDtos;
     }
-
-
 
 
 }
